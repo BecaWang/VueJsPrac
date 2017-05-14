@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>IRP ErrorCode Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+<div id="app"> 
+    <select v-model="selected_p" v-on:change="onProductChange">
+     <option value="">請選擇</option>
+     <option v-for="product in product_lists" value="{{ product }}">
+       {{ product }}
+     </option>
+    </select>
+    
+    <select v-model="selected_p_detail_item">
+      <option value="">請選擇</option>
+      <option v-for="detail in product_detail[selected_p]" value="{{ detail}}">{{ detail }}</option>
+    </select>
+    
+    <hr>
+    <div>選擇的產品為: {{ selected_p }}</div>
+    <div>子項目: {{ selected_p_detail_item }}</div>
+    <div>取得完整的名稱: {{ getProductSarchName() }}</div>
+</div>
+
+
+<script type="text/javascript">
+
+
+new Vue({
+  el: '#app',
+  data: {
+    selected_p: '',
+    selected_p_detail_item: '',
+    product_lists: [
+      '手錶',
+      '衣服'
+    ],
+    product_detail: {
+      '手錶': [
+        'apple watch',
+        'epson',
+        '星辰'
+       ],
+      '衣服': [
+        'roots',
+        'hang ten',
+        'lativ'
+       ]
+    }
+  },
+  methods: {
+     onProductChange: function() {
+       // reset!
+       this.selected_p_detail_item = '';
+     },
+     getProductSarchName: function() {
+      var result = this.selected_p + '\t' + this.selected_p_detail_item; console.log(result);
+        
+       return  result;
+     }
+  }
+});
+
+
+</script>
+
+
+</body>
+</html>

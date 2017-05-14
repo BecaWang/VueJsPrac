@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <title>Vue.Js Component Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+<currency-input v-model="price"></currency-input>
+{{price}}
+
+</div>
+
+<script type="text/javascript">
+
+Vue.component('currency-input',{
+	template:'\
+	<span>\
+	$\
+	<input\
+	ref="input"\
+	v-bind:value="value"\
+	v-on:input="updateValue($event.target.value)"\
+	>\
+	</span>\
+	',
+
+
+	props:['value'],
+	methods: {
+		updateValue: function(value){
+			var formattedValue = value.trim().slice(0, value.indexOf('.')+3)
+			if (formattedValue !== value) {
+				this.$refs.input.value = formattedValue
+			}
+			this.$emit('input', Number(formattedValue))
+		}
+	}
+})
+
+new Vue({
+	el:'#app'
+})
+
+
+
+</script>
+
+
+</body>
+</html>

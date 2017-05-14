@@ -1,0 +1,118 @@
+<html lang="en">
+<head>
+  <title>Vue.Js Component Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+	<my-component></my-component>
+</div>
+
+<div id="example2">
+	<simple-counter></simple-counter>
+</div>
+
+<div id='example3'>
+	<child message="hello vue!!!!"></child>
+
+	<div>
+		<input v-model="parentMsg">
+		<br>
+		<child :message="parentMsg"></child>
+	</div>
+
+</div>
+
+<div id="counter-event-example">
+<p>{{total}}</p>
+<button-counter v-on:increment="incrementTotal"></button-counter>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+Vue.component('button-counter',{
+template:'<button v-on:click="increment">{{counter}}</button>',
+data: function(){
+	return{
+		counter:22
+	}
+},
+methods:{
+	increment: function(){
+		this.counter +=1
+		this.$emit('increment')
+
+	}
+},
+
+})
+
+new Vue({
+	el:'#counter-event-example',
+	data:{
+		total:0
+	},
+	methods: {
+		incrementTotal: function () {
+			this.total += 1
+		}
+	}
+
+})
+
+
+
+
+var Child = {
+	template:'<div>Child test </div>'
+}	
+// 创建根实例
+new Vue({
+  el: '#example',
+  	components:{
+		'my-component':Child
+	}
+})
+
+
+
+Vue.component('simple-counter', {
+  template: '<button v-on:click="counter += 1">{{ counter }}</button> {{test}}',
+
+  data: function () {
+    return {
+    	counter: 5 ,
+    	test: 'beca'
+    }
+  }
+})
+new Vue({
+  el: '#example2'
+})
+
+
+Vue.component('child',{
+	props:['message'],
+	template:'<span>{{message}}</span>'
+})
+new Vue({
+  el: '#example3'
+})
+
+
+</script>
+
+</body>
+
+</html?
