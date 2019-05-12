@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>vue js tutor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+        <div id="gender">
+                <select id="s_gender" :value="selectVal" @change="updateVal">
+                    <option v-for="list in lists" :value="list.val">{{list.item}}</option>
+                </select>
+                <div>選擇的性別是:{{selectName}}</div>
+                <div>該性別的值是:{{selectVal}}</div>
+
+        </div>
+
+
+<script type="text/javascript">
+
+genderData = {
+    selectName : '',
+    selectVal : '',
+    lists : [
+        {val:"M",item:'男'},
+        {val:"W",item:'女'},
+    ]
+}
+
+genderMethods = {
+    //將目前該性別選單的value和name寫入genderData的selectName及selectVal
+    updateVal : () =>{
+        let obj = document.getElementById('s_gender')
+        //取得值
+        genderData.selectVal = obj.value;
+        //取得目前選擇選項的文字
+        genderData.selectName = obj.options[obj.selectedIndex].text;
+      
+    }
+}
+
+new Vue({
+    el:'#gender',
+    data:genderData,
+    methods:genderMethods,
+
+})
+
+</script>
+</body>
+</html>
