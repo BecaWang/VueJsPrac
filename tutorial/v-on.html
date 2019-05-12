@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>vue js tutor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+  <div id="timeDiv" v-on:click="getTime">
+    {{content}}
+  </div>
+
+
+<script type="text/javascript">
+
+timeData = {
+  content:'點我看時間',
+}
+
+timeMethods = {
+    getTime: ()=>{
+        console.log(String(new Date()))
+    },
+}
+
+new Vue({
+    el:'#timeDiv',
+    data:timeData,
+    methods: timeMethods,
+
+})
+
+</script>
+
+
+</body>
+</html>
