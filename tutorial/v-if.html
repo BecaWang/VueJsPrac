@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>v-if</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="vueDiv" >
+        <span v-if="status == 'A'">我是小明</span>
+        <span v-if="status == 'B'">我是小華</span>
+        <span v-else>我是神Q</span>
+    </div>
+
+    <div id="vueDiv2" >
+        <input v-if="status" placeholder="輸入姓名">
+        <input v-else="status" placeholder="輸入mail">
+        <input type="button" value="切換輸入" @click="changeStatus">
+    </div>
+
+<script type="text/javascript">
+
+
+vueData = {
+    status : 'C',
+}
+
+vueDiv = new Vue({
+    el:'#vueDiv',
+    data:vueData,
+})
+
+
+vueData2 = {
+    status : true,
+}
+
+vueMethods = {
+    //切換status的值
+    changeStatus : () =>{
+        vueData2.status ? vueData2.status = false : vueData2.status = true
+    }
+}
+
+new Vue({
+    el:'#vueDiv2',
+    data:vueData2,
+    methods:vueMethods,
+})
+
+</script>
+
+
+</body>
+</html>

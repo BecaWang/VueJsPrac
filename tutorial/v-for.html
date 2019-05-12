@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>v-for</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+
+
+    <div id="todoList">
+            <div v-for="(index,list) in lists">
+                    {{index}}.{{titleText}} - {{list.item}}
+            </div>
+    </div>
+
+
+<script type="text/javascript">
+listData = {
+    titleText:'要做的事情',
+
+    //lists屬性中存著陣列
+    lists:[
+        //陣列中擁有多個相同key的物件
+        {item:'學Vue.js'},
+        {item:'學React'},
+        {item:'學Angular2'}
+    ]
+}
+
+new Vue({
+    el:'#todoList',
+    data:listData,
+})
+</script>
+
+
+</body>
+</html>
