@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>vue js tutor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="gender">
+        <div>
+            <span v-for="list in lists">
+              <input type="checkbox" :value="list.item" v-model="checkedNames"/>
+              <label>{{list.item}}</label>
+            </span>
+          </div>
+          <div>選擇的性別是:{{checkedNames}}</div>
+    </div>
+
+<script type="text/javascript">
+
+genderData = {
+    //這裡綁定的值要是陣列
+    checkedNames : [],
+    lists : [
+        {val:"M",item:'男'},
+        {val:"W",item:'女'},
+    ]
+}
+
+new Vue({
+    el:'#gender',
+    data:genderData,
+})
+
+</script>
+
+
+</body>
+</html>
