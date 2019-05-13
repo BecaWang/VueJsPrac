@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>vue js tutor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+    <div id="nameVue">
+            {{name}}
+    </div>
+
+
+<script type="text/javascript">
+
+nameData={
+    firstName : 'Tom',
+    lastName : 'Cruise',
+}
+
+let nameVue = new Vue({
+    el:'#nameVue',
+    data:nameData,
+    computed:{
+        name:{
+            //取值，把姓氏和名字加起來回傳 getter在computed的屬性中是預設的
+        get:() => nameData.firstName + ' ' + nameData.lastName,
+
+        set:(val) => {
+            //把val用一個空格分割成陣列，因為姓和名中間通常有空白
+            let name = val.split(' ')
+            //給值，姓給firstName，名字給lastName
+            nameData.firstName = name[0]
+            nameData.lastName = name[1]
+        }
+        }
+    }
+})
+</script>
+
+
+</body>
+</html>
