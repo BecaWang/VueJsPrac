@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>vue js tutor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+<div id="ex1Vue"> 
+    <div id="outside" :style = "outside" @click ="clickOutside">
+        <div id="inside" :style ="inside" @click="clickInside">
+            <!--<input id="clickMe" type="button" value="發大財" @click="clickMe"></inpit>-->
+            <!--採用stop修飾符 來限制觸發區域-->
+            <input id="clickMe" type="button" value="發大財" @click.stop="clickMe"></inpit>
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+ex1Data ={
+    outside:{
+        height:'100px',
+        width:'200px',
+        'background-color':'blue',
+    },
+    inside:{
+        height:'50px',
+        width:'150px',
+        backgroundColor:'red',
+    },
+}
+
+ex1Method ={
+    clickOutside: ()=>{
+        console.log("外面")
+    },
+    clickInside: ()=>{
+        console.log("裡面")
+    },
+    clickMe: ()=>{
+        console.log("按鈕")
+
+    }
+}
+
+new Vue({
+    el:'#ex1Vue',
+    data:ex1Data,
+    methods:ex1Method,
+})
+
+</script>
+
+
+</body>
+</html>

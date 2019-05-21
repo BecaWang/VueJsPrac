@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>vue js tutor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+</head>
+<body>
+
+  <!-- prevent修飾符 阻止標籤執行的一些預設事件-->
+
+  <div id="ex1Vue">
+      <!--<a href="{{URLText}}" @click="clickMe">{{message}}</a>-->
+      <a href="{{URLText}}" @click.prevent="clickMe">{{message}}</a>
+  </div>
+
+<script type="text/javascript">
+
+
+ex1Data ={
+  message:'發大財',
+  URLText:'https://ithelp.ithome.com.tw/articles/10198986?sc=pt',
+}
+
+ex1Methods={
+  clickMe: ()=>{
+    console.log("發大財")
+  }
+
+}
+
+new Vue({
+  el:'#ex1Vue',
+  data:ex1Data,
+  methods:ex1Methods,
+})
+
+
+
+</script>
+
+
+</body>
+</html>
